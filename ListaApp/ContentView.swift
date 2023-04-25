@@ -11,11 +11,15 @@ struct ContentView: View {
     @StateObject private var listaTareas = ListaTareas()
     var body: some View {
         NavigationView{
-            List{
-                ForEach(listaTareas.tareas){
-                   tarea in TareaIndividual(tarea: tarea)
-                }
-            }.navigationTitle("Tares")
+            VStack{
+                List{
+                    ForEach(listaTareas.tareas){
+                       tarea in TareaIndividual(tarea: tarea)
+                    }
+                    NavigationLink(destination: NuevaTareaView(listaTareas: listaTareas), label: {Text("Crear Nueva Tarea")})
+                }.navigationTitle("Tareas")
+            }
+          
         }
     }
 }
